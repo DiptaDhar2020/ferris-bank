@@ -101,10 +101,10 @@
         document.getElementById("deposit-amount").value = "";
         
        })
-       function updateAmount(id, depositValue){
+       function updateAmount(id, addedValue){
         const current = document.getElementById(id).innerText;
         const currentValue = parseFloat(current);
-        const total = depositValue + currentValue;
+        const total = addedValue + currentValue;
         document.getElementById(id).innerText = total;
        }
 
@@ -113,13 +113,14 @@
       withdraw.addEventListener("click", function(){
         // const withdrawAmount = document.getElementById("withdraw-amount").value;
         // withdrawValue = parseFloat(withdrawAmount);
-        const withdrawValue = getInputAmount("withdraw-amount")
-        const currentWithdraw = document.getElementById("current-withdraw").innerText;
-        const currentWithdrawValue = parseFloat(currentWithdraw);
-        const total = depositValue - currentWithdrawValue;
-        document.getElementById("current-balance").innerText = total;
+        const withdrawValue = getInputAmount("withdraw-amount");
+        // const currentWithdraw = document.getElementById("current-withdraw").innerText;
+        // const currentWithdrawValue = parseFloat(currentWithdraw);
+        // const total = depositValue - currentWithdrawValue;
+        // document.getElementById("current-balance").innerText = total;
+        updateAmount("current-withdraw", withdrawValue);
+        updateAmount("current-balance", -1 * withdrawValue)
         document.getElementById("withdraw-amount").value = "";
-
       })
       function getInputAmount(id){
         const amount = document.getElementById(id).value;
